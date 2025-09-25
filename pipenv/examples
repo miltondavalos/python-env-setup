@@ -1,0 +1,20 @@
+# 1) Create and enter your project folder
+mkdir myproject && cd myproject
+
+# 2) Create a pipenv using Python 3.12 (ensures the right interpreter)
+pipenv --python 3.12
+
+# 3) Install a runtime dependency (example: selenium)
+pipenv install selenium
+
+# 4) Install dev/test-only tools
+pipenv install --dev pytest   # (use --dev; don't use plain `pipenv install pytest`)
+
+# 5) Activate the virtualenv for interactive work
+pipenv shell
+# ...work here...
+exit  # or Ctrl+D to leave
+
+# 6) Or run commands without shelling in
+pipenv run python app.py
+pipenv run pytest
