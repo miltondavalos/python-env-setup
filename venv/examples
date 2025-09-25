@@ -1,0 +1,54 @@
+# 1) Create and enter your project folder
+mkdir myproject && cd myproject
+
+# 2) (Optional) Ensure the right Python version is available
+# macOS/Linux with pyenv:
+#   pyenv install 3.12.6
+#   pyenv local 3.12.6
+# Windows: install Python 3.12.x from python.org or winget/choco
+
+# 3) Create a virtual environment inside the project
+python3.12 -m venv .venv          # macOS/Linux (adjust version as needed)
+# or
+py -3.12 -m venv .venv            # Windows (uses 'py' launcher if installed)
+
+# 4) Activate the virtual environment
+# macOS/Linux:
+source .venv/bin/activate
+# Windows (PowerShell):
+.venv\Scripts\Activate.ps1
+# Windows (cmd):
+.venv\Scripts\activate.bat
+
+# 5) Upgrade pip (good hygiene)
+python -m pip install --upgrade pip
+
+# 6) Install your runtime dependency (example: selenium)
+python -m pip install selenium
+
+# 7) Install dev/test tools in a separate file (recommended)
+# Create two requirement files:
+#   requirements.txt        -> runtime deps
+#   requirements-dev.txt    -> dev/test-only deps (e.g., pytest)
+
+# Save current runtime deps
+python -m pip freeze > requirements.txt
+
+# Add dev tools
+python -m pip install pytest
+python -m pip freeze > requirements-dev.txt
+
+# 8) Run code/tests inside the env
+python app.py
+pytest
+
+# 9) Deactivate when done
+deactivate
+Recreate the environment (teammates/CI)
+
+# Fresh clone/setup:
+python3.12 -m venv .venv
+source .venv/bin/activate   # (or Windows equivalent)
+python -m pip install --upgrade pip
+python -m pip install -r requirements.txt
+python -m pip install -r requirements-dev.txt   # if you need dev tools
