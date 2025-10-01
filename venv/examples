@@ -25,8 +25,12 @@ python -m pip install --upgrade pip
 
 # 6) Install your runtime dependency (example: selenium)
 python -m pip install selenium
+python3 -m pip install playwright pytest pytest-playwright pytest-xdist python-dotenv faker
 
-# 7) Install dev/test tools in a separate file (recommended)
+# 7) Install browsers (required)
+playwright install chromium   # or: playwright install  (all browsers)
+
+# 8) Install dev/test tools in a separate file (recommended)
 # Create two requirement files:
 #   requirements.txt        -> runtime deps
 #   requirements-dev.txt    -> dev/test-only deps (e.g., pytest)
@@ -38,11 +42,11 @@ python -m pip freeze > requirements.txt
 python -m pip install pytest
 python -m pip freeze > requirements-dev.txt
 
-# 8) Run code/tests inside the env
+# 9) Run code/tests inside the env
 python app.py
 pytest
 
-# 9) Deactivate when done
+# 10) Deactivate when done
 deactivate
 Recreate the environment (teammates/CI)
 
@@ -52,3 +56,4 @@ source .venv/bin/activate   # (or Windows equivalent)
 python -m pip install --upgrade pip
 python -m pip install -r requirements.txt
 python -m pip install -r requirements-dev.txt   # if you need dev tools
+
