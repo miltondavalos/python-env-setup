@@ -45,6 +45,10 @@ python -m pip freeze > requirements-dev.txt
 # Install dependencies
 python -m pip install -r requirements.txt
 
+# List .venv directory location
+python -m pip --version or python -m pip -V
+
+
 # 9) Run code/tests inside the env
 python app.py
 pytest
@@ -59,5 +63,6 @@ source .venv/bin/activate   # (or Windows equivalent)
 python -m pip install --upgrade pip
 python -m pip install -r requirements.txt
 python -m pip install -r requirements-dev.txt   # if you need dev tools
+
 
 
